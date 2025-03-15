@@ -4,15 +4,10 @@ from random import randrange
 
 def random_choice():
     indexA = randrange(len(data))
-    option1 = data[indexA]
-
     indexB = randrange(len(data))
     while indexB == indexA:
         indexB = randrange(len(data))
-
-    option2 = data[indexB]
-
-    return option1, option2
+    return data[indexA], data[indexB]
 
 def compare(data_a, data_b, choice_user):
     if data_a >  data_b:
@@ -28,12 +23,10 @@ def game_prints(compare_a, compare_b):
 
 def game_score(running):
     global SCORE
-
     if running:
         SCORE += 1
     else:
         running = False
-
     return running
 
 def validation(run):
@@ -47,8 +40,7 @@ def main():
     optionA, optionB = random_choice()
     game_is_running = game_score(game_prints(optionA, optionB))
     validation(game_is_running)
-
-    # Make the game repeatable.
+    
     while game_is_running:
         # Clear the screen
         print("\n" * 20)
